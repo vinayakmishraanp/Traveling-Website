@@ -1,6 +1,3 @@
-console.log("Coordinates:", coordinates);
-console.log("Latitude:", coordinates[1]);
-console.log("Longitude:", coordinates[0]);
 
 const map = L.map("map").setView(
     [coordinates[1], coordinates[0]], // latitude, longitude

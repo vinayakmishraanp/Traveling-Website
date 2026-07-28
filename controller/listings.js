@@ -87,19 +87,41 @@ module.exports.renderEditForm=async(req,res)=>{
     }
 
 
-    module.exports.updateListing=async(req, res) => {
+module.exports.updateListing = async (req, res) => {
     const { id } = req.params;
-    let listing = await Listing.findByIdAndUpdate(id,req.body.listing);
-   if(typeof req.file !=="undefined"){
-    let url=  req.file.path;
-    let filename=req.file.filename;
-    listing.image={url,filename};
-    await listing.save();
-   }
 
-    req.flash("success","Listing Updated");
+    // Geocode the updated location
+    const response = await maptiler.geocoding.forward(
+        req.body.listing.location,
+        { limit: 1 }
+    );
+
+    // Update geometry if a location was found
+    if (response.features.length > 0) {
+        req.body.listing.geometry = response.features[0].geometry;
+    }
+
+    // Update the listing
+    let listing = await Listing.findByIdAndUpdate(
+        id,
+        req.body.listing,
+        {
+            new: true,
+            runValidators: true,
+        }
+    );
+
+    // Update image if a new one was uploaded
+    if (typeof req.file !== "undefined") {
+        let url = req.file.path;
+        let filename = req.file.filename;
+        listing.image = { url, filename };
+        await listing.save();
+    }
+
+    req.flash("success", "Listing Updated");
     res.redirect(`/listings/${id}`);
-}
+};
 
 module.exports.destroyListing=async(req,res)=>{
     let {id}=req.params;

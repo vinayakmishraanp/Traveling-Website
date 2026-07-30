@@ -1,103 +1,86 @@
 <% layout("layouts/boilerplate") -%>
 
-<style>
-    .filters{
-        align-items: center;
-    }
-    .filter{
-        text-align:  center;
-        margin-top: 1rem;
-        opacity: 0.8;
-        
-    }
-    
-    .filter p{
-        font-size: 0.8rem;
-    }
-    .filter:hover{
-        opacity: 1;
-        cursor: pointer;
-    }
-    .filter2{
-        margin-left:3.2rem ;
-        
-    }
-    .tax-info{
-        display: none;
-    }
-    .tax-toggle{
-        border: 1px solid black;
-        border-radius: 0.5rem;
-        height: 2.5rem;
-        padding: 0.5rem;
-        margin-left: 2rem;
-    }
 
 
-</style>
+ <div class="d-flex align-items-center mt-3">
 
-  
-   <div class="filters d-flex " data-category="Beach">
+    <!-- Left Button -->
+    <button class="btn btn-light shadow-sm rounded-circle d-lg-none me-2 ms-auto mb-2" id="prevBtn">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
 
-    <div class="filter" data-category="Trending">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <p>Trending</p>
+    <!-- Filters -->
+    <div class="filters d-flex flex-nowrap overflow-auto" id="filters">
+
+        <div class="filter" data-category="Trending">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+
+        <div class="filter filter2" data-category="Rooms">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+        </div>
+
+        <div class="filter filter2" data-category="Amazing movies">
+            <div><i class="fa-solid fa-video"></i></div>
+            <p>Amazing Movies</p>
+        </div>
+
+        <div class="filter filter2" data-category="Iconic cities">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic cities</p>
+        </div>
+
+        <div class="filter filter2" data-category="Beach">
+            <div><i class="fa-solid fa-umbrella-beach"></i></div>
+            <p>Beach</p>
+        </div>
+
+        <div class="filter filter2" data-category="Mountain">
+            <div><i class="fa-solid fa-mountain-sun"></i></div>
+            <p>Mountains</p>
+        </div>
+
+        <div class="filter filter2" data-category="Castles">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+        </div>
+
+        <div class="filter filter2" data-category="Amazing pooles">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing Pools</p>
+        </div>
+
+        <div class="filter filter2" data-category="Campain">
+            <div><i class="fa-solid fa-tents"></i></div>
+            <p>Camping</p>
+        </div>
+
+        <div class="filter filter2" data-category="Farms">
+            <div><i class="fa-solid fa-tractor"></i></div>
+            <p>Farms</p>
+        </div>
+
+        <div class="filter filter2" data-category="Artic">
+            <div><i class="fa-solid fa-person-skiing-nordic"></i></div>
+            <p>Arctic</p>
+        </div>
+
     </div>
 
-    <div class="filter2 filter d-none d-md-block" data-category="Rooms">
-        <div><i class="fa-solid fa-bed"></i></div>
-        <p>Rooms</p>
-    </div>
+    <!-- Right Button -->
+    <button class="btn btn-light shadow-sm rounded-circle d-lg-none ms-2" id="nextBtn">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
 
-    <div class="filter2 filter d-none d-md-block" data-category="Amazing movies">
-        <div><i class="fa-solid fa-video"></i></div>
-        <p>Amazing Movies</p>
-    </div>
-
-    <div class="filter2 filter " data-category="Iconic cities">
-        <div><i class="fa-solid fa-mountain-city"></i></div>
-        <p>Iconic cities</p>
-    </div>
-
-    <div class="filter2 filter d-none d-md-block" data-category="Beach">
-        <div><i class="fa-solid fa-umbrella-beach"></i></div>
-        <p>Beach</p>
-    </div>
-
-    <div class="filter2 filter d-none d-lg-block" data-category="Mountain">
-        <div><i class="fa-solid fa-mountain-sun"></i></div>
-        <p>Mountains</p>
-    </div>
-
-    <div class="filter2 filter d-none d-lg-block" data-category="Castles">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-        <p>Castles</p>
-    </div>
-
-    <div class="filter2 filter d-none d-lg-block" data-category="Amazing pooles">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Amazing Pools</p>
-    </div>
-
-    <div class="filter2 filter d-none d-lg-block" data-category="Campain">
-        <div><i class="fa-solid fa-tents"></i></div>
-        <p>Camping</p>
-    </div>
-
-    <div class="filter2 filter d-none d-lg-block" data-category="Farms">
-        <div><i class="fa-solid fa-tractor"></i></div>
-        <p>Farms</p>
-    </div>
-
-    <div class="filter2 filter d-none d-lg-block" data-category="Artic">
-        <div><i class="fa-solid fa-person-skiing-nordic"></i></div>
-        <p>Arctic</p>
-    </div>
-
-    <div class="tax-toggle">
-        <div class="form-check-reverse form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-            <label class="form-check-label" for="switchCheckDefault">Display taxes</label>
+    <!-- Tax Toggle -->
+    <div class="tax-toggle ms-3 mb-3">
+        <div class="form-check form-switch m-0">
+            <input class="form-check-input" type="checkbox" id="switchCheckDefault">
+            <label class="form-check-label" for="switchCheckDefault">
+                Display Taxes
+            </label>
         </div>
     </div>
 
@@ -126,3 +109,4 @@
 </div>
 <script src="/js/filter.js"></script>
 
+<script src="/js/indexOption.js"></script>

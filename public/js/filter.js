@@ -23,3 +23,20 @@ priceSwitch.addEventListener("click",()=>{
       
     }
 })
+
+
+//     const filters = document.getElementById("filters");
+
+// document.getElementById("nextBtn").addEventListener("click", () => {
+//     filters.scrollBy({
+//         left:250,
+//         behavior:"smooth"
+//     });
+// });
+
+// document.getElementById("prevBtn").addEventListener("click", () => {
+//     filters.scrollBy({
+//         left:-250,
+//         behavior:"smooth"
+//     });
+// });

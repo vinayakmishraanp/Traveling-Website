@@ -8,14 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         nextBtn.addEventListener("click", () => {
             filters.scrollBy({
-                left: 100,
+                left: 60,
                 behavior: "smooth"
             });
         });
 
         prevBtn.addEventListener("click", () => {
             filters.scrollBy({
-                left: -100,
+                left: -60,
                 behavior: "smooth"
             });
         });
